@@ -9,7 +9,8 @@ import (
 func ParseBody(r *http.Request, model interface{}) error {
 	if body, err := io.ReadAll(r.Body); err == nil {
 		if err := json.Unmarshal([]byte(body), model); err != nil {
-			return
+			return err
 		}
 	}
+	return nil
 }
